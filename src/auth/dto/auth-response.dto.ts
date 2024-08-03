@@ -10,11 +10,6 @@ export class AuthUserDto {
 
   phoneNumber!: string;
 
-  hospitalId!: string;
-
-  roleId?: string;
-
-  roleIds?: string[];
 
   password?: string;
 
@@ -32,14 +27,9 @@ export class AuthUserDto {
 
   enabled: boolean;
 
-  staffId: string;
-
   createdAt: Date;
 
   updatedAt: Date;
 
-  role?: object;
-
-  gender: string;
 }
 

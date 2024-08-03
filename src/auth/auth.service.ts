@@ -61,9 +61,14 @@ export class AuthService {
   }
 
   async register(
-    data: RegisterDto & { hospital?: string },
+    data: RegisterDto & { id?: string },
   ) {
     try {
+
+      if(data.code !== "9999")  throw new BadRequestException(
+        'Invalid unique code',
+      );
+
       const { email, phoneNumber } = data;
       const existingEmail = await this.userService.findOne({
         where: { email },
@@ -79,7 +84,7 @@ export class AuthService {
         throw new BadRequestException(
           'Phone Number already exists in database',
         );
-      const user = await this.userService.create(data);
+      const user = await this.userService.create({...data});
           //send Email
       return user;
     } catch (error) {
@@ -123,6 +128,11 @@ export class AuthService {
     } catch (error) {
       return Promise.reject(error);
     }
+  }
+
+  uniqueCode() {
+
+    return "39990"
   }
 
   async signin(data: LoginDto): Promise<any> {

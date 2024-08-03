@@ -17,14 +17,15 @@ export class RegisterDto {
   @ApiProperty()
   dialcode: string;
 
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  code: string;
+
   @IsNumberString()
   @IsNotEmpty()
   @ApiProperty()
   phoneNumber!: string;
-
-  @IsNotEmpty()
-  @ApiProperty()
-  hospitalId!: string;
 
   @IsNotEmpty()
   @ApiProperty()
